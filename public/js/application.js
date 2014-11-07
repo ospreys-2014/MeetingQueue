@@ -1,7 +1,19 @@
+console.log("Hello");
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+  $('#participants').on('click','button', function(event) {
+    event.preventDefault();
+    // console.log($(event.target).data("id"));
+    var id = $(event.target).data("id");
+    $button = $(event.target);
+    $.ajax({
+      url: "/participant/" + id,
+      type: "PUT",
+      data: {participant: { q_status : true}},
+      dataType: "JSON"
+    }).done(function(response){
+      $('#queue').append("<li data-id="+id+">" + response.name + "</li>");
+      $button.prop('disabled',true);
+    })
+  });
+})

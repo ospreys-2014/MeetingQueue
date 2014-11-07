@@ -1,0 +1,22 @@
+<h1>Picking Strawberries</h1>
+  <div>
+    <h2>Queue:</h2>
+    <ul id="queue">
+    <% @queue.each do |participant| %>
+    <li data-id=<%= "#{participant.id}" %>> <%= participant.name %></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <button type="button">Next</button> <br><br>
+
+  <div id="participants">
+    <h2>Participants:</h2>
+    <% @participants.each do |participant| %>
+
+    <button data-id=<%= "#{participant.id}" %> type="button" <%= 'disabled' if participant.q_status %>>
+      <%= participant.name %>
+    </button>
+
+    <% end %>
+  </div>
