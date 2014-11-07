@@ -19,6 +19,7 @@ get '/meeting/:id' do |id|
   @meeting = Meeting.find(id)
   @participants = @meeting.participants
 
+<<<<<<< Updated upstream
   @queue = @participants.where(q_status: true).order(:updated_at)
 
   erb :'/meeting/queue'
@@ -28,5 +29,8 @@ put '/participant/:id' do |id|
   participant = Participant.find(id)
   participant.update(params[:participant])
   participant.to_json
+=======
+  erb :'/meeting/queue', locals: {meeting: @meeting, participant: @particpants}
+>>>>>>> Stashed changes
 end
 
