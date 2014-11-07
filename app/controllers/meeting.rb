@@ -17,9 +17,8 @@ end
 
 get '/meeting/:id' do |id|
   @meeting = Meeting.find(id)
-  @participants = @meeting.participants
-
-  @queue = @participants.where(q_status: true).order(:updated_at)
+  @participants = @meeting.participants.order(:created_at)
+  @queue = @participants.where(q_status: true).sort_by(&:updated_at)
 
   erb :'/meeting/queue'
 end
