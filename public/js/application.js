@@ -28,9 +28,13 @@ $(document).ready(function() {
       type: "PUT",
       data: {participant: {q_status : false}},
       dataType: "JSON"
-    }).done(function(response){
+    }).done(function(){
+      console.log("Helloooooooooo?");
       // jQuery('').button("refresh");
-      ($('#destroy_list').children("li").eq(0)).remove();
+      console.log($("#destroy-list li[data-id='"+id+"']"))
+      $("#participants li[data-id='"+id+"']'").removeAttr("disabled");
+      $("#destroy-list li[data-id='"+id+"']").remove();
+      // ($('#destroy_list').remove(children("li").eq(0)));
     });
   })
 })
