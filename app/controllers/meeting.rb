@@ -1,0 +1,6 @@
+get '/:word' do
+
+end
+
+
+
