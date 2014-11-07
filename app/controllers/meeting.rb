@@ -8,9 +8,8 @@ end
 
 post '/meeting/new' do
   @meeting = Meeting.create(params[:meeting])
-  @participant = Participant.create(params[:participant])
-  @participant.meeting_id = @meeting.id
-  @participant.save
+  @participants  = params[:participant].split(',')
+  add_participants(@meeting, @participants)
 
   redirect to "/meeting/#{@meeting.id}"
 end
@@ -18,7 +17,6 @@ end
 get '/meeting/:id' do |id|
   @meeting = Meeting.find(id)
   @participants = @meeting.participants
-
 
   @queue = @participants.where(q_status: true).order(:updated_at)
 
