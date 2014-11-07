@@ -1,7 +1,26 @@
 get '/' do
-  @participants = Participant.all
+  erb :'meeting/index'
+end
+
+get '/meeting/new' do
+  erb :'meeting/_meetingform'
+end
+
+post '/meeting/new' do
+  @meeting = Meeting.create(params[:meeting])
+  @participant = Participant.create(params[:participant])
+  @participant.meeting_id = @meeting.id
+  @participant.save
+
+  redirect to "/meeting/#{@meeting.id}"
+end
+
+get '/meeting/:id' do |id|
+  @meeting = Meeting.find(id)
+  @participants = @meeting.participants
+
   @queue = @participants.where(q_status: true).order(:updated_at)
-  p @queue
+
   erb :'/meeting/queue'
 end
 
