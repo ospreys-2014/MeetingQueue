@@ -3,7 +3,7 @@ get '/' do
 end
 
 get '/meeting/new' do
-  erb :'meeting/_meetingform'
+  erb :'meeting/_meetingform', layout: false
 end
 
 post '/meeting/new' do

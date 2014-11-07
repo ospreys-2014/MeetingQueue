@@ -18,4 +18,19 @@ $(document).ready(function() {
       $button.prop('disabled',true);
     })
   });
+
+  $('#new_meeting').on('submit', function(event) {
+    event.preventDefault();
+    $this = $(this)
+    $this.hide();
+    // $form = $(event.target);
+    $.ajax({
+      url: "/meeting/new",
+      type: "GET",
+      dataType: "HTML"
+    }).done(function(response){
+      console.log(response)
+      $('p.lead').append(response);
+    })
+  })
 })
