@@ -12,6 +12,8 @@ $(document).ready(function() {
       data: {participant: { q_status : true}},
       dataType: "JSON"
     }).done(function(response){
+      console.log(id);
+      console.log(response);
       $('#queue').append("<li data-id="+id+">" + response.name + "</li>");
       $button.prop('disabled',true);
     })

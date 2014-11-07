@@ -19,6 +19,7 @@ get '/meeting/:id' do |id|
   @meeting = Meeting.find(id)
   @participants = @meeting.participants
 
+
   @queue = @participants.where(q_status: true).order(:updated_at)
 
   erb :'/meeting/queue'
