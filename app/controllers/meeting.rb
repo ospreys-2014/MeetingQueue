@@ -3,14 +3,13 @@ get '/' do
 end
 
 get '/meeting/new' do
-  erb :'meeting/_meetingform'
+  erb :'meeting/_meetingform', layout: false
 end
 
 post '/meeting/new' do
   @meeting = Meeting.create(params[:meeting])
-  @participant = Participant.create(params[:participant])
-  @participant.meeting_id = @meeting.id
-  @participant.save
+  @participants  = params[:participant].split(',')
+  add_participants(@meeting, @participants)
 
   redirect to "/meeting/#{@meeting.id}"
 end

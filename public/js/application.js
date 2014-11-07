@@ -12,8 +12,25 @@ $(document).ready(function() {
       data: {participant: { q_status : true}},
       dataType: "JSON"
     }).done(function(response){
+      console.log(id);
+      console.log(response);
       $('#queue').append("<li data-id="+id+">" + response.name + "</li>");
       $button.prop('disabled',true);
     })
   });
+
+  $('#new_meeting').on('submit', function(event) {
+    event.preventDefault();
+    $this = $(this)
+    $this.hide();
+    // $form = $(event.target);
+    $.ajax({
+      url: "/meeting/new",
+      type: "GET",
+      dataType: "HTML"
+    }).done(function(response){
+      console.log(response)
+      $('p.lead').append(response);
+    })
+  })
 })
