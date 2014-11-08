@@ -32,9 +32,29 @@ $(document).ready(function() {
       console.log("Helloooooooooo?");
       // jQuery('').button("refresh");
       console.log($("#destroy-list li[data-id='"+id+"']"))
-      $("#participants li[data-id='"+id+"']'").removeAttr("disabled");
+      // FIGURE OUT BELOW. why isn't it working?
+      // Disable the next button when there's no one in the queue
+      console.log($("#participants li[data-id='"+id+"']"));
+      $("#participants button[data-id='"+id+"']").prop("disabled", false);
       $("#destroy-list li[data-id='"+id+"']").remove();
       // ($('#destroy_list').remove(children("li").eq(0)));
     });
+      // $('#queue').append("<li data-id="+id+">" + response.name + "</li>");
+      // $button.prop('disabled',true);
+    })
+
+  $('#new_meeting').on('submit', function(event) {
+    event.preventDefault();
+    $this = $(this)
+    $this.hide();
+    // $form = $(event.target);
+    $.ajax({
+      url: "/meeting/new",
+      type: "GET",
+      dataType: "HTML"
+    }).done(function(response){
+      console.log(response)
+      $('p.lead').append(response);
+    })
   })
 })
