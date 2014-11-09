@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $('#participants').on('click','button', function(event) {
     event.preventDefault();
     // console.log($(event.target).data("id"));
@@ -18,7 +17,34 @@ $(document).ready(function() {
 
   $('#queue').on('click','button', function(event) {
     event.preventDefault();
-    console.log("Howdy!")
+    console.log("NEXT!");
+
+    // ****************** TIMER begins ***********************************
+    document.getElementById('audiotag1').pause();
+    document.getElementById('audiotag1').currentTime = 0;
+
+    var seconds = 10;
+    secondPassed = function() {
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('countdown').innerHTML = "\"Time and tide wait for no one.\"";
+        document.getElementById('audiotag1').play();
+    } else {
+        seconds--;
+    }
+}
+    clearInterval(countdownTimer);
+    var countdownTimer = setInterval('secondPassed()', 1000);
+
+    // ******************** TIMER ends *******************************
+
+
     var id = $('#destroy-list').children("li").eq(0).data("id");
     console.log(id)
     var $button = $(event.target);

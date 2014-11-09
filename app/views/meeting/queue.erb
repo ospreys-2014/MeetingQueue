@@ -1,22 +1,31 @@
 <h1> <%= @meeting.title %>  </h1>
 <h3> <%= @meeting.description %> </h3>
+<div class="queue-container">
   <div id="queue">
     <h2>Queue:</h2>
     <ul id="destroy-list">
-    <% @queue.each do |participant| %>
-    <li data-id=<%= "#{participant.id}" %>> <%= participant.name %></li>
-    <% end %>
+      <% @queue.each do |participant| %>
+      <li data-id=<%= "#{participant.id}" %>> <%= participant.name %></li>
+      <% end %>
     </ul>
-  <button type="button">Next</button> <br><br>
+    <button type="button">Next</button> <br><br>
   </div>
+</div>
 
-  <div id="participants">
-    <h2>Participants:</h2>
-    <% @participants.each do |participant| %>
+<div id="participants">
+  <h2>Participants:</h2>
+  <% @participants.each do |participant| %>
 
-    <button data-id=<%= "#{participant.id}" %> type="button" <%= 'disabled' if participant.q_status %>>
-      <%= participant.name %>
-    </button>
+  <button data-id=<%= "#{participant.id}" %> type="button" <%= 'disabled' if participant.q_status %>>
+    <%= participant.name %>
+  </button>
 
-    <% end %>
-  </div>
+  <% end %>
+</div>
+
+
+<!-- *********************** ADDING HERE ******************************** -->
+<br><br>
+<span id="countdown" class="timer"></span>
+
+<audio id="audiotag1" src="/Clocks.mp3" preload="auto"></audio>
