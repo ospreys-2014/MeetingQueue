@@ -104,7 +104,20 @@ input + input {
     margin-top: 280px;
 }
 
+.queue-container {
+  height: 25%;
+}
+
 /* Padding for spacing */
 .inner {
   padding: 30px;
+}
+
+#countdown {
+  font-size: 50px;
+}
+
+li:first-child {
+  color: green;
+  font-size: 30px;
 }
