@@ -45,6 +45,11 @@ body {
   display: ;
 }*/
 
+ul li {
+  list-style-type: none;
+  margin-right: 40px;
+}
+
 form {
     width: 80%;
     margin: 0 auto;
@@ -77,6 +82,7 @@ label + textarea {
 input + input {
     float: right;
 }
+
 
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
