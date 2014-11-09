@@ -45,9 +45,39 @@ body {
   display: ;
 }*/
 
-.newform{
-
+form {
+    width: 80%;
+    margin: 0 auto;
 }
+
+label, input {
+    display: inline-block;
+}
+
+label, textarea {
+    display: inline-block;
+    margin: 10px;
+}
+
+label {
+    width: 30%;
+    text-align: right;
+}
+
+label + input {
+    width: 30%;
+    margin: 0 30% 0 4%;
+}
+
+label + textarea {
+    width: 30%;
+    margin: 0 30% 0 4%;
+}
+
+input + input {
+    float: right;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
